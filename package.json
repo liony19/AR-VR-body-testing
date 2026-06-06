@@ -1,0 +1,19 @@
+{
+  "name": "webxr-cv-game",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototype where a desktop webcam drives a mobile WebXR game over WebSocket.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "webxr",
+    "computer-vision",
+    "websocket",
+    "mobile-game"
+  ],
+  "license": "UNLICENSED"
+}

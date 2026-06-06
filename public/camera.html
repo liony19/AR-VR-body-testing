@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Camera | WebXR CV Game</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="brand-mark"></span>
+        <div>
+          <strong>Camera CV</strong>
+          <span>notebook</span>
+        </div>
+      </div>
+      <div class="hud-stack">
+        <input id="roomInput" class="small-input" aria-label="Sala">
+        <span id="socketStatus" class="status-pill muted">offline</span>
+      </div>
+    </header>
+
+    <main class="camera-layout">
+      <section class="vision-stage">
+        <div class="canvas-frame">
+          <video id="cameraVideo" class="video-hidden" autoplay muted playsinline></video>
+          <canvas id="visionCanvas" width="1280" height="720"></canvas>
+          <div class="stage-badge">
+            <span id="modeBadge">cor</span>
+            <span id="trackingBadge">sem alvo</span>
+          </div>
+        </div>
+
+        <div class="camera-toolbar">
+          <button id="startButton" class="primary-action" type="button">iniciar camera</button>
+          <button id="sampleButton" class="secondary-action" type="button">amostrar cor</button>
+          <div class="segmented" role="tablist" aria-label="Modo de visao">
+            <button id="colorModeButton" class="active" type="button">cor</button>
+            <button id="motionModeButton" type="button">movimento</button>
+          </div>
+          <a id="gameShortcut" class="secondary-action" href="/game">jogo</a>
+        </div>
+      </section>
+
+      <aside class="side-stack">
+        <section class="panel control-panel">
+          <div class="panel-heading">
+            <h1>Tracking</h1>
+            <span id="peerCount" class="status-pill muted">0 pares</span>
+          </div>
+
+          <div class="swatch-row">
+            <div id="colorSwatch" class="color-swatch" aria-hidden="true"></div>
+            <div>
+              <strong id="targetColorLabel">rgb(255, 80, 80)</strong>
+              <p id="sampleState" class="muted-copy">amostra livre</p>
+            </div>
+          </div>
+
+          <div class="range-row">
+            <label class="range-label" for="toleranceRange">tolerancia de cor</label>
+            <input id="toleranceRange" type="range" min="20" max="160" value="74">
+          </div>
+
+          <div class="range-row">
+            <label class="range-label" for="motionRange">sensibilidade de movimento</label>
+            <input id="motionRange" type="range" min="12" max="90" value="36">
+          </div>
+        </section>
+
+        <section class="panel control-panel">
+          <div class="panel-heading">
+            <h2>Comando</h2>
+            <span id="commandBadge" class="status-pill muted">idle</span>
+          </div>
+          <div class="metric-grid">
+            <div class="metric">
+              <span>x</span>
+              <strong id="xMetric">0.00</strong>
+            </div>
+            <div class="metric">
+              <span>y</span>
+              <strong id="yMetric">0.00</strong>
+            </div>
+            <div class="metric">
+              <span>area</span>
+              <strong id="areaMetric">0%</strong>
+            </div>
+            <div class="metric">
+              <span>energia</span>
+              <strong id="energyMetric">0%</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel control-panel">
+          <div class="panel-heading">
+            <h2>Links</h2>
+            <button id="refreshLinksButton" class="icon-button" type="button">atualizar</button>
+          </div>
+          <div id="cameraLinks" class="camera-links"></div>
+        </section>
+      </aside>
+    </main>
+
+    <script type="module" src="/camera.js"></script>
+  </body>
+</html>

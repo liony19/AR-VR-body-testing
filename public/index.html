@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>WebXR CV Game</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="app-shell page-home">
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="brand-mark"></span>
+        <div>
+          <strong>WebXR CV Game</strong>
+          <span>Sala em tempo real</span>
+        </div>
+      </div>
+      <span id="homeStatus" class="status-pill muted">local</span>
+    </header>
+
+    <main class="home-grid">
+      <section class="panel room-panel">
+        <label class="field-label" for="roomInput">Sala</label>
+        <div class="room-row">
+          <input id="roomInput" class="room-input" autocomplete="off" spellcheck="false">
+          <button id="newRoomButton" class="icon-button wide" type="button">nova</button>
+        </div>
+        <div class="home-actions">
+          <a id="cameraLink" class="primary-action" href="/camera">abrir camera</a>
+          <a id="gameLink" class="secondary-action" href="/game">abrir jogo</a>
+        </div>
+      </section>
+
+      <section class="panel links-panel">
+        <div class="panel-heading">
+          <h1>Celular</h1>
+          <button id="refreshLinksButton" class="icon-button" type="button" aria-label="Atualizar links">atualizar</button>
+        </div>
+        <div id="networkLinks" class="links-list"></div>
+      </section>
+
+      <section class="panel flow-panel">
+        <div class="flow-step">
+          <span>1</span>
+          <strong>Camera</strong>
+          <small>tracking no notebook</small>
+        </div>
+        <div class="flow-step">
+          <span>2</span>
+          <strong>Socket</strong>
+          <small>comandos por sala</small>
+        </div>
+        <div class="flow-step">
+          <span>3</span>
+          <strong>Jogo</strong>
+          <small>canvas e AR no celular</small>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/home.js"></script>
+  </body>
+</html>
